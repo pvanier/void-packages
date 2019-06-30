@@ -1,0 +1,19 @@
+# Template file for 'rocm-smi'
+pkgname=rocm-smi
+version=2.4.0
+revision=1
+wrksrc="ROC-smi-roc-${version}"
+archs="x86_64"
+hostmakedepends=""
+makedepends=""
+depends="python rocr-runtime>=${version}"
+short_desc="AMD ROCm - System Management Interface"
+maintainer="Pascal Vanier <pascal.vanier@lacl.fr>"
+license="MIT"
+homepage="https://rocm.github.io/"
+distfiles="https://github.com/RadeonOpenCompute/ROC-smi/archive/roc-${version}.tar.gz"
+checksum=
+
+do_install() {
+             vbin rocm_smi.py rocm-smi
+}

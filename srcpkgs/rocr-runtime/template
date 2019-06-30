@@ -1,0 +1,25 @@
+# Template file for 'rocm'
+pkgname=rocr-runtime
+version=2.5.0
+revision=1
+wrksrc="ROCR-Runtime-roc-${version}/src"
+archs="x86_64"
+build_style=cmake
+hostmakedepends=""
+makedepends="elfutils-devel roct-thunk-interface-devel"
+depends="roct-thunk-interface>=${version}"
+
+short_desc="AMD ROCm - ROCr Runtime"
+
+maintainer="Pascal Vanier <pascal.vanier@lacl.fr>"
+license="MIT"
+homepage="https://rocm.github.io/"
+distfiles="https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-${version}.tar.gz>rocr-runtime-${version}.tar.gz"
+checksum=6678bdaf4f6d8ce6e4ed24131f4455c719c0a643c8479f3d69722caa8b4d7187
+#rocr-runtime-devel_package() {
+#	depends="rocr-runtime-${version}_${revision}"
+#	short_desc+=" - development files"
+#	pkg_install() {
+#		vcopy include usr
+#	}
+#}

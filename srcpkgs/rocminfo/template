@@ -1,0 +1,21 @@
+# Template file for 'rocminfo'
+pkgname=rocminfo
+version=1.0.0
+revision=1
+archs="x86_64"
+build_style=cmake
+hostmakedepends=""
+makedepends="rocr-runtime"
+depends="python rocr-runtime"
+short_desc="AMD ROCm - application for reporting system info"
+maintainer="Pascal Vanier <pascal.vanier@lacl.fr>"
+license="MIT"
+homepage="https://rocm.github.io/"
+distfiles="https://github.com/RadeonOpenCompute/rocminfo/archive/1.0.0.tar.gz"
+checksum=858823b8d0e42c1c2b1ee41bdb8410068a907a62ea1f629531db1b74664a1403
+configure_args="-DROCM_DIR=/usr"
+
+do_install() {
+	vbin build/rocminfo
+	vbin build/rocm_agent_enumerator
+}

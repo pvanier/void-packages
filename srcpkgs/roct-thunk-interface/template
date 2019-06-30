@@ -1,0 +1,25 @@
+# Template file for 'rocm'
+pkgname=roct-thunk-interface
+version=2.5.0
+revision=1
+wrksrc="ROCT-Thunk-Interface-roc-${version}"
+archs="x86_64"
+build_style=cmake
+hostmakedepends="pkg-config"
+makedepends="pciutils-devel libnuma-devel"
+depends="numactl pciutils libnuma"
+short_desc="AMD ROCm - ROCt-Thunk-Interface"
+maintainer="Pascal Vanier <pascal.vanier@lacl.fr>"
+license="MIT"
+homepage="https://rocm.github.io/"
+distfiles="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/roc-${version}.tar.gz>roct-thunk-interface-${version}.tar.gz"
+checksum=1ec04105c9569040c7bdd1a7513c17a0c4d67d31526c4bf33394842ebd482167
+roct-thunk-interface-devel_package() {
+	depends="roct-thunk-interface-${version}_${revision}"
+	short_desc+=" - development files"
+  	pkg_install() {
+        	vcopy include usr
+		vmkdir usr/lib
+		vcopy "build/*.so.*" usr/lib
+	}
+}
