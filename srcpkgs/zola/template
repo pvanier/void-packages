@@ -1,26 +1,25 @@
 # Template file for 'zola'
 pkgname=zola
-version=0.7.0
-revision=2
+version=0.9.0
+revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
-makedepends="libressl-devel libsass-devel"
+makedepends="libressl-devel libsass-devel oniguruma-devel"
 short_desc="Fast opinionated static site generator written in rust"
 maintainer="Carson Page <pagem.carson@gmail.com>"
 license="MIT"
 homepage="https://github.com/getzola/zola"
 changelog="https://github.com/getzola/zola/raw/master/CHANGELOG.md"
 distfiles="https://github.com/getzola/zola/archive/v${version}.tar.gz"
-checksum=6a07a1a08f8b0db50ed87599fca712937004a53ef5950a1d17a1bc3d463a2979
+checksum=8d226ec764f2bc06de8e49e2e22ccf37811bc478bbcaa83c2c841b222ef4fc4e
 
-case "$XBPS_TARGET_MACHINE" in
-	aarch64-musl) broken="https://github.com/nix-rust/nix/issues/951" ;;
-	i686*) broken="https://github.com/rust-lang/rust/issues/60184" ;;
+case $XBPS_TARGET_MACHINE in
+	armv6l-musl) broken="triggers segfault in rustc" ;;
 esac
 
 pre_build() {
-	cargo update --package openssl-sys --precise 0.9.46
-	cargo update --package openssl --precise 0.10.22
+	export PKG_CONFIG_ALL_DYNAMIC=1
+	export RUSTONIG_SYSTEM_LIBONIG=1
 }
 
 post_install() {

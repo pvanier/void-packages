@@ -1,7 +1,7 @@
 # Template file for 'powerdevil'
 pkgname=powerdevil
-version=5.15.5
-revision=2
+version=5.17.4
+revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
 hostmakedepends="extra-cmake-modules pkg-config kdoctools kauth
@@ -13,4 +13,9 @@ maintainer="John <johnz@posteo.net>"
 license="GPL-2.0-or-later"
 homepage="https://projects.kde.org/projects/plasma/powerdevil"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=c435cdcab2ff367ca86f91a45ac43fa9f9b68251e8e444b285b7edd33482ad06
+checksum=8bd49fa5d1f5886dbc23f42e35c3e7b1ece6502c2c22cb20c981060ac250de80
+
+case "$XBPS_TARGET_MACHINE" in
+	arm*) broken="xorg-server-xwayland is not available"
+	;;
+esac

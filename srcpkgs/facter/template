@@ -1,6 +1,6 @@
 # Template file for 'facter'
 pkgname=facter
-version=3.14.0
+version=3.14.5
 revision=1
 build_style=cmake
 configure_args="-DRUBY_CONFIG_INCLUDE_DIR=${XBPS_CROSS_BASE}/usr/include
@@ -10,11 +10,11 @@ makedepends="boost-devel cpp-hocon leatherman libblkid-devel libcurl-devel
  ruby-devel yaml-cpp-devel"
 depends="net-tools ruby"
 short_desc="Collect and display system facts"
-maintainer="Juan RP <xtraeme@voidlinux.org>"
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="Apache-2.0"
 homepage="https://puppetlabs.com/facter"
 distfiles="https://downloads.puppetlabs.com/${pkgname}/${pkgname}-${version}.tar.gz"
-checksum=c17a8ae549489217cf8854c5b52f2f511ec31b0f284c043bd77965479e7e2e4f
+checksum=cb8906fe711f2bc2a797d71667b24e220340f36e598a79a57953d548ea189b5c
 
 pre_configure() {
 	case "$XBPS_TARGET_MACHINE" in

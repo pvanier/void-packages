@@ -1,8 +1,9 @@
 # Template file for 'mkvtoolnix'
 pkgname=mkvtoolnix
-version=35.0.0
+version=41.0.0
 revision=1
 build_style=gnu-configure
+build_helper=qmake
 configure_args="--with-docbook-xsl-root=/usr/share/xsl/docbook --enable-qt"
 hostmakedepends="autoconf docbook-xsl libxslt pkg-config ruby"
 makedepends="boost-devel cmark-devel file-devel json-c++
@@ -14,11 +15,10 @@ license="GPL-2.0-only"
 homepage="https://www.bunkus.org/videotools/mkvtoolnix/"
 changelog="https://mkvtoolnix.download/doc/NEWS.md"
 distfiles="https://www.bunkus.org/videotools/${pkgname}/sources/${pkgname}-${version}.tar.xz"
-checksum=5144e77ce0bd4653733bd07eed143870fb5cdcda31c5e943a3f22a069da4e6fd
+checksum=7cdd6ad9144324162604172b7e96cb13cdbb7913e07c4ad7633344aac20e4103
 
 if [ "$CROSS_BUILD" ]; then
 	configure_args+=" --with-boost=${XBPS_CROSS_BASE}/usr"
-	hostmakedepends+=" qt5-host-tools qt5-multimedia-devel qt5-tools-devel"
 fi
 
 pre_configure() {

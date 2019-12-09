@@ -1,6 +1,6 @@
 # Template file for 'gtk+3'
 pkgname=gtk+3
-version=3.24.9
+version=3.24.13
 revision=1
 wrksrc="gtk+-${version}"
 build_style=gnu-configure
@@ -22,11 +22,11 @@ makedepends="at-spi2-atk-devel gdk-pixbuf-devel libepoxy-devel pango-devel
  $(vopt_if cloudproviders 'libcloudproviders-devel')"
 depends="gtk-update-icon-cache shared-mime-info $(vopt_if x11 'dbus-x11')"
 short_desc="GTK+ toolkit (v3)"
-maintainer="Rasmus Thomsen <oss@cogitri.dev>"
+maintainer="Enno Boland <gottox@voidlinux.org>"
 license="LGPL-2.1-or-later"
 homepage="https://www.gtk.org/"
 distfiles="${GNOME_SITE}/gtk+/${version%.*}/gtk+-${version}.tar.xz"
-checksum=577eb0270d9adf2eb2aa4b03f9c7873fadb20cf265194d0139570f738493e635
+checksum=4c775c38cf1e3c534ef0ca52ca6c7a890fe169981af66141c713e054e68930a9
 
 # Package build options
 build_options="broadway colord cups gir cloudproviders wayland x11"

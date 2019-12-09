@@ -1,6 +1,6 @@
 # Template file for 'libgdal'
 pkgname=libgdal
-version=3.0.0
+version=3.0.2
 revision=3
 wrksrc="gdal-${version}"
 build_style=gnu-configure
@@ -14,7 +14,7 @@ maintainer="Jürgen Buchmüller <pullmoll@t-online.de>"
 license="MIT"
 homepage="http://www.gdal.org/"
 distfiles="http://download.osgeo.org/gdal/${version}/gdal-${version}.tar.xz"
-checksum=ad316fa052d94d9606e90b20a514b92b2dd64e3142dfdbd8f10981a5fcd5c43e
+checksum=c3765371ce391715c8f28bd6defbc70b57aa43341f6e94605f04fe3c92468983
 subpackages="libgdal-devel libgdal-tools"
 
 post_install() {

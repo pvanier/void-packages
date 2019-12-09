@@ -1,6 +1,6 @@
 # Template file for 'kfilemetadata5'
 pkgname=kfilemetadata5
-version=5.59.0
+version=5.64.0
 revision=1
 wrksrc="${pkgname%5}-${version}"
 build_style=cmake
@@ -14,7 +14,7 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.1-or-later"
 homepage="https://projects.kde.org/projects/frameworks/kfilemetadata"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname%5}-${version}.tar.xz"
-checksum=7aeacfc538375dae4c8b3ab6411216a48a6971f012f1ab1b9d1e0f835429d6c9
+checksum=4b581e4d659defe4db595a984ed4c037bc80e0bf7b298ec79e6aa5061fa56e23
 
 kfilemetadata5-devel_package() {
 	short_desc+=" - development"
@@ -22,6 +22,7 @@ kfilemetadata5-devel_package() {
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/cmake
+		vmove usr/lib/qt5/mkspecs
 		vmove "usr/lib/*.so"
 	}
 }

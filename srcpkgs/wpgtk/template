@@ -1,6 +1,6 @@
 # Template file for 'wpgtk'
 pkgname=wpgtk
-version=5.8.7
+version=6.0.11
 revision=1
 archs=noarch
 build_style=python3-module
@@ -12,4 +12,4 @@ maintainer="travankor <travankor@tuta.io>"
 license="GPL-2.0-only"
 homepage="https://github.com/deviantfero/wpgtk/"
 distfiles="https://github.com/deviantfero/wpgtk/archive/${version}.tar.gz"
-checksum=2ad72c5efc7966dcb5b79581346fe0f3dda3cbeb8325b35b9ff49e4fb6f099f5
+checksum=dcf0a915cfa0be5667f188f15b59120ce7e157f88f7aaba40fa0ba6e3f302976

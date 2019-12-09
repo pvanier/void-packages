@@ -1,9 +1,8 @@
 # Template file for 'keditbookmarks'
 pkgname=keditbookmarks
-version=19.04.2
+version=19.08.3
 revision=1
 build_style=cmake
-configure_args="-DBUILD_TESTING=OFF"
 hostmakedepends="extra-cmake-modules kcoreaddons kconfig kdoctools
  pkg-config qt5-host-tools qt5-qmake"
 makedepends="kparts-devel qt5-devel"
@@ -12,4 +11,8 @@ maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="GPL-2.0-or-later, GFDL-1.2-only"
 homepage="https://www.kde.org/"
 distfiles="${KDE_SITE}/applications/${version}/src/keditbookmarks-${version}.tar.xz"
-checksum=436d5ec6489e1d5f8a9e259468184e5d7909f8bf51cea7dbf069096c133e7a2c
+checksum=ce2e90f24cac8dabe3e3804232715b47e247d51c86699162e2f7f63d1f290b05
+
+pre_check() {
+	export QT_QPA_PLATFORM=offscreen
+}

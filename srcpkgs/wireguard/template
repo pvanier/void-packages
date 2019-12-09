@@ -1,6 +1,6 @@
 # Template file for 'wireguard'
 pkgname=wireguard
-version=0.0.20190601
+version=0.0.20191206
 revision=1
 wrksrc="WireGuard-${version}"
 build_wrksrc="src/tools"
@@ -13,7 +13,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2.0-only"
 homepage="https://www.wireguard.com/"
 distfiles="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-${version}.tar.xz"
-checksum=7528461824a0174bd7d4f15e68d8f0ce9a8ea318411502b80759438e8ef65568
+checksum=75e4e8f2971257339ef45af1be67f0a21435235f25277e3e0e4d6f867714ece5
 
 dkms_modules="wireguard ${version}"
 
@@ -28,6 +28,7 @@ post_install() {
 wireguard-tools_package() {
 	short_desc+=" - tools"
 	depends="openresolv"
+	make_dirs="/etc/wireguard 0700 root root"
 	pkg_install() {
 		vmove usr/bin/wg
 		vmove usr/bin/wg-quick

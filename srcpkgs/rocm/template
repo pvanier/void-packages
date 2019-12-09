@@ -1,6 +1,6 @@
 # Template file for 'rocm'
 pkgname=rocm
-version=2.5.0
+version=2.7.0
 revision=1
 #wrksrc=
 create_wrksrc=yes

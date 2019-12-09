@@ -1,17 +1,14 @@
 # Template file for 'kwalletmanager'
 pkgname=kwalletmanager
-version=19.04.2
+version=19.08.3
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules pkg-config kauth"
+hostmakedepends="extra-cmake-modules kauth kdoctools pkg-config
+ qt5-host-tools qt5-qmake"
 makedepends="kcmutils-devel kparts-devel qt5-devel"
 short_desc="KDE Wallet Management Tools"
 maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="GPL-2.0-only"
 homepage="https://www.kde.org/applications/system/kwalletmanager/"
 distfiles="${KDE_SITE}/applications/${version}/src/kwalletmanager-${version}.tar.xz"
-checksum=fe54cc90795bd4d8cb19b61fab011833dce1754c597eda4cda0f59be40c01868
-
-if [ -n "$CROSS_BUILD" ]; then
-	hostmakedepends+=" kconfig kdoctools python qt5-host-tools qt5-qmake"
-fi
+checksum=00c1362d1454f4593e1f99847b97b3da99931c74ceafc3c3350337af0038b985

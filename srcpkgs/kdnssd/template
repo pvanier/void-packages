@@ -1,6 +1,6 @@
 # Template file for 'kdnssd'
 pkgname=kdnssd
-version=5.59.0
+version=5.64.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -11,7 +11,7 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.0-or-later"
 homepage="https://projects.kde.org/projects/frameworks/kdnssd"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=08b3a948b33c529ffbf5e9c64ae64fd73b50e20ebfa0e52f4346ad62a3c283d6
+checksum=92d9a4947c45e56ea15e417eaf87121b4b3a4f1f81dfd154d2ee968a9797f46b
 
 kdnssd-devel_package() {
 	short_desc+=" - development"

@@ -1,6 +1,6 @@
 # Template file for 'kconfigwidgets'
 pkgname=kconfigwidgets
-version=5.59.0
+version=5.64.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -12,7 +12,7 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.0-or-later"
 homepage="https://projects.kde.org/projects/frameworks/kconfigwidgets"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/${pkgname}-${version}.tar.xz"
-checksum=ec26801097f5ea81611f1830c7cbca77e84d5ece0ea7526d967d1e3371490de9
+checksum=e84d590c064f2a86d5b9d2fb5d8aa7abc8ac8752125f5d3197cca6dc7e115c56
 
 kconfigwidgets-devel_package() {
 	short_desc+=" - development"
@@ -20,6 +20,7 @@ kconfigwidgets-devel_package() {
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/qt5/mkspecs
+		vmove usr/lib/qt5/plugins/designer
 		vmove usr/lib/cmake
 		vmove "usr/lib/*.so"
 	}

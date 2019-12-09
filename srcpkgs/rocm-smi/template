@@ -1,6 +1,6 @@
 # Template file for 'rocm-smi'
 pkgname=rocm-smi
-version=2.4.0
+version=2.7.0
 revision=1
 wrksrc="ROC-smi-roc-${version}"
 archs="x86_64"
@@ -12,7 +12,7 @@ maintainer="Pascal Vanier <pascal.vanier@lacl.fr>"
 license="MIT"
 homepage="https://rocm.github.io/"
 distfiles="https://github.com/RadeonOpenCompute/ROC-smi/archive/roc-${version}.tar.gz"
-checksum=
+checksum=7346d49c369fbc419cf3ae8dc408185f7606d64342438de804ede8baf5561155
 
 do_install() {
              vbin rocm_smi.py rocm-smi

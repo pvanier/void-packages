@@ -4,9 +4,9 @@ _desc="NVIDIA drivers (GeForce 8, 9, 9M, 100, 100M, 200, 300 series)"
 
 pkgname=nvidia340
 version=340.107
-revision=3
-maintainer="Juan RP <xtraeme@voidlinux.org>"
-license="Proprietary NVIDIA license"
+revision=6
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="custom:NVIDIA proprietary"
 homepage="http://www.nvidia.com"
 
 archs="i686 x86_64"
@@ -38,11 +38,12 @@ do_extract() {
 	rm -f ${_pkg}.run
 }
 
-do_configure() {
+do_patch() {
 	cd ${_pkg}
 	patch -p0 < ${FILESDIR}/kernel-4.11.patch
 	patch -p0 < ${FILESDIR}/kernel-5.0.patch
 	patch -p0 < ${FILESDIR}/kernel-5.1.patch
+	patch -p0 < ${FILESDIR}/kernel-5.3.patch
 }
 
 do_install() {
@@ -201,6 +202,7 @@ nvidia340-opencl_package() {
 }
 nvidia340-libs_package() {
 	short_desc="${_desc} - libraries"
+	conflicts="libglvnd>=0"
 	provides="libGL-${version}_${revision}"
 	replaces="libGL>=0"
 	pkg_install() {

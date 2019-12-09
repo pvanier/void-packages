@@ -1,18 +1,20 @@
 # Template file for 'yabasic'
 pkgname=yabasic
 reverts="2.769_1"
-version=2.83.0
+version=2.86.0
 revision=1
 build_style=gnu-configure
-makedepends="libXt-devel ncurses-devel"
+makedepends="libXt-devel ncurses-devel libffi-devel"
 short_desc="Yet another Basic"
 maintainer="Diogo Leal <diogo@diogoleal.com>"
-license="GPL-3.0-or-later"
-homepage="http://2484.de/yabasic/"
-distfiles="http://2484.de/yabasic/download/yabasic-${version}.tar.gz"
-checksum=24eaca1a520817ec266d132d89b4a657d5adf3e6bad54f13b103991afdca6d40
+license="MIT, GPL-3.0-or-later"
+homepage="https://2484.de/yabasic/"
+distfiles="https://2484.de/yabasic/download/yabasic-${version}.tar.gz"
+checksum=8189e9761420132c608271e408710f8120933fde5469cfb5ce6dee3f7fad6fe4
 
 do_install() {
 	vbin yabasic
 	vman yabasic.1
+	vdoc yabasic.htm
+	vlicense LICENSE
 }

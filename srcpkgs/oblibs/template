@@ -1,17 +1,17 @@
 # Template file for 'oblibs'
 pkgname=oblibs
-version=0.0.1.1
+version=0.0.3.2
 revision=1
 wrksrc="${pkgname}-v${version}"
 build_style=configure
-configure_args="--prefix=/usr --libdir=/usr/lib"
-makedepends="skalibs-devel"
+configure_args="--prefix=/usr --libdir=/usr/lib --with-sysdeps=${XBPS_CROSS_BASE}/usr/lib/skalibs/sysdeps"
+makedepends="skalibs-devel execline-devel"
 short_desc="Obarun library"
 maintainer="mobinmob <mobinmob@disroot.org>"
 license="ISC"
 homepage="https://framagit.org/Obarun/oblibs"
 distfiles="${homepage}/-/archive/v${version}/${pkgname}-v${version}.tar.bz2"
-checksum=fbb0eaf9223805124f76c086a2d1a444649d077ef86bc05762776b8c0cfad1b3
+checksum=ba8292881e2c7e5c82fdeb991f77cabedb09d92aad969e86ad683032d0c136cc
 
 post_install() {
 	vlicense COPYING

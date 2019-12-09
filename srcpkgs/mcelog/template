@@ -1,6 +1,6 @@
 # Template file for 'mcelog'
 pkgname=mcelog
-version=162
+version=166
 revision=1
 archs="i686* x86_64*"
 conf_files="/etc/mcelog/mcelog.conf"
@@ -9,7 +9,7 @@ maintainer="Leah Neukirchen <leah@vuxu.org>"
 license="GPL-2.0-only"
 homepage="http://www.mcelog.org/"
 distfiles="https://github.com/andikleen/${pkgname}/archive/v${version}.tar.gz"
-checksum=875e98572e86240ea319ab1f69ee6d744eb8b73ac5d700e474f6410d0f52d3fc
+checksum=f717b7bd725a2573e9d1556d3543cb385f1c9fa68fe682f1bc93952b726eedb4
 
 do_build() {
 	make CC=$CC CFLAGS="$CFLAGS $LDFLAGS" ${makejobs}

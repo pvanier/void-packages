@@ -1,6 +1,6 @@
 # Template file for 'wireshark'
 pkgname=wireshark
-version=3.0.2
+version=3.0.7
 revision=1
 build_style=cmake
 hostmakedepends="pkg-config flex perl python3-devel mit-krb5-devel qt5-tools
@@ -15,7 +15,7 @@ maintainer="Enno Boland <gottox@voidlinux.org>"
 license="GPL-2.0-or-later"
 homepage="https://www.wireshark.org"
 distfiles="https://www.wireshark.org/download/src/${pkgname}-${version}.tar.xz"
-checksum=7e1ec5664a0dba4493d8729f9922378bdd05040fb159c2b03b42111efda2e53b
+checksum=3b2b279017753398b8d5deb440db5f98a205eea35f9417e5fa2893947e7992f2
 system_groups="wireshark"
 
 CFLAGS="-I${XBPS_CROSS_BASE}/usr/include/lua5.2"

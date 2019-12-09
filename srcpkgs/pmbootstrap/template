@@ -1,19 +1,19 @@
 # Template file for 'pmbootstrap'
 pkgname=pmbootstrap
-version=1.6.1
+version=1.11.0
 revision=1
 archs=noarch
 build_style=python3-module
 pycompile_module="pmb"
 hostmakedepends="python3-setuptools"
-depends="python3 coreutils procps-ng libressl"
+depends="python3-setuptools coreutils procps-ng libressl"
 checkdepends="python3-pytest"
 short_desc="PostmarketOS's chroot, build and flash tool"
-maintainer="maxice8 <thinkabit.ukim@gmail.com>"
+maintainer="bra1nwave <bra1nwave@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://postmarketos.org"
 distfiles="https://gitlab.com/postmarketOS/pmbootstrap/-/archive/${version}/pmbootstrap-${version}.tar.gz"
-checksum=03c77ea8442c11cf09feeb435fb861079961d4658062f94b78a1c65ed8bf21ea
+checksum=ef1e94a8ae32058cca6936e6ee0d09f9117354d4e5ba64dc2cb27160874f340e
 
 do_check() {
 	python3 -m pytest

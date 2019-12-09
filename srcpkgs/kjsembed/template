@@ -1,6 +1,6 @@
 # Template file for 'kjsembed'
 pkgname=kjsembed
-version=5.59.0
+version=5.64.0
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -11,11 +11,15 @@ maintainer="John <johnz@posteo.net>"
 license="LGPL-2.0-or-later"
 homepage="https://projects.kde.org/projects/frameworks/kjsembed"
 distfiles="${KDE_SITE}/frameworks/${version%.*}/portingAids/${pkgname}-${version}.tar.xz"
-checksum=743c5a860a917b8f7746781b21df407511b3873a0074fba2f61291a951c5edc3
+checksum=939226116cb47fd66dc45a41baa3c0f45b7ab904ec7674088ced3df5c7bae62e
 
 if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" qt5-host-tools qt5-qmake python kdoctools"
 fi
+
+case "$XBPS_TARGET_MACHINE" in
+	armv6l-musl) makedepends+=" libatomic-devel";;
+esac
 
 kjsembed-devel_package() {
 	short_desc+=" - development"

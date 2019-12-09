@@ -1,6 +1,6 @@
 # Template file for 'master-pdf-editor'
 pkgname=master-pdf-editor
-version=5.4.30
+version=5.4.38
 revision=1
 archs="x86_64"
 wrksrc="master-pdf-editor-5"
@@ -10,7 +10,7 @@ maintainer="Giuseppe Fierro <gspe@ae-design.ws>"
 license="custom:Proprietary"
 homepage="https://code-industry.net/free-pdf-editor/"
 distfiles="https://code-industry.net/public/${pkgname}-${version}-qt5.amd64.tar.gz"
-checksum=fa90f396902033e3c30e31b9f648ceb5f08af410dcba63a38447b1c6f14cd678
+checksum=985512bfa82d820fa473d93d88318cdfb7513efab1f15c9ff31b57d21ef22d3a
 nostrip=yes
 repository=nonfree
 

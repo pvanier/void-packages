@@ -1,11 +1,11 @@
 # Template file for 'smu'
 pkgname=smu
 version=1.5
-revision=1
+revision=2
 build_style=gnu-makefile
 make_build_args="INCS=-I. LIBS="
 short_desc="Simple markup - markdown like syntax"
-maintainer='Juan RP <xtraeme@voidlinux.org>'
+maintainer="Orphaned <orphan@voidlinux.org>"
 license="MIT"
 homepage="https://github.com/Gottox/smu/"
 distfiles="https://github.com/Gottox/smu/archive/v${version}.tar.gz"
@@ -18,4 +18,5 @@ pre_build() {
 
 post_install() {
 	vlicense LICENSE
+	vdoc documentation
 }

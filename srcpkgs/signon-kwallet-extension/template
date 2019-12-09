@@ -1,6 +1,6 @@
 # Template file for 'signon-kwallet-extension'
 pkgname=signon-kwallet-extension
-version=19.04.2
+version=19.08.3
 revision=1
 build_style=cmake
 hostmakedepends="extra-cmake-modules pkg-config qt5-host-tools qt5-qmake"
@@ -10,4 +10,4 @@ maintainer="Piotr Wójcik <chocimier@tlen.pl>"
 license="GPL-2.0-only"
 homepage="https://cgit.kde.org/signon-kwallet-extension.git/"
 distfiles="${KDE_SITE}/applications/${version}/src/signon-kwallet-extension-${version}.tar.xz"
-checksum=70f99d0c3b2351bc865456676839a7632b1cc5566f477a2e611857f12095a0ba
+checksum=273ff874bf08dd97a12b3b07215bc0ce9fd3c3c59b6bb1f61000411454211a65

@@ -1,7 +1,8 @@
 # Template file for 'cargo'
 pkgname=cargo
-version=0.36.0
-revision=3
+version=0.40.0
+revision=1
+wrksrc="cargo-${version}"
 build_helper=rust
 hostmakedepends="rust python curl cmake pkg-config"
 makedepends="libcurl-devel libgit2-devel"
@@ -10,70 +11,66 @@ short_desc="Rust package manager"
 maintainer="Enno Boland <gottox@voidlinux.org>"
 license="MIT, Apache-2.0"
 homepage="https://crates.io/"
-distfiles="https://github.com/rust-lang/cargo/archive/${version}.tar.gz"
-checksum=532a39ce9acc1436c5d33ce0643d050bc29183c46abe69934622c4f24f4c6831
-_cargo_dist_version=0.36.0
+_libgit2_ver=0.9.1
+distfiles="https://github.com/rust-lang/cargo/archive/${version}.tar.gz
+ https://github.com/rust-lang/git2-rs/archive/libgit2-sys-${_libgit2_ver}.tar.gz"
+checksum="b0a6808a2eaa9b20ccaeedeb04f583ee34b33d289f4d0076044b9fc2b1f4c59d
+ 81e20fa9a0f6ea3e3a0e6458148f3dea4a89af87d34128d4375f2b7fd661a49c"
+_cargo_dist_version=0.39.0
 build_options="static"
 
 if [ "$CROSS_BUILD" ]; then
 	hostmakedepends+=" cargo"
 	makedepends+=" rust"
 else
+	_bootstrap_url="https://static.rust-lang.org/dist"
+
 	case "$XBPS_MACHINE" in
-	x86_64-musl)
-		distfiles+="
-		 https://static.rust-lang.org/dist/cargo-${_cargo_dist_version}-x86_64-unknown-linux-musl.tar.gz"
-		checksum+="
-		 7a84d006688ffe9e292db59690e7fc99616d6d1a6d981affb93d121fca9e8bb5"
-		;;
-	x86_64)
-		distfiles+="
-		 https://static.rust-lang.org/dist/cargo-${_cargo_dist_version}-x86_64-unknown-linux-gnu.tar.gz"
-		checksum+="
-		 77586f2fb5b6f6caef0cb6d3cc32a18559d4fcd6a6db4e75f4b3fb7adb050437"
-		;;
-	i686)
-		distfiles+="
-		 https://static.rust-lang.org/dist/cargo-${_cargo_dist_version}-i686-unknown-linux-gnu.tar.gz"
-		checksum+="
-		 6ef32560bfa7c85dee6ef932a5e35994457f3e05e2cf8979c19971b8a5b805e4"
-		;;
-	ppc64le)
-		distfiles+="
-		 https://static.rust-lang.org/dist/cargo-${_cargo_dist_version}-powerpc64le-unknown-linux-gnu.tar.gz"
-		checksum+="
-		 d196e4e506c89653c533e34c77fb5be7928a1667bca64a3fd866dd0d1aecfc6d"
-		;;
-	ppc64le-musl)
-		distfiles+="
-		 https://alpha.de.repo.voidlinux.org/distfiles/cargo-${_cargo_dist_version}-powerpc64le-unknown-linux-musl.tar.xz"
-		checksum+="
-		 9347f6c8b391e0142cda60988690f7bc9a877f8012ea2e71c35343a4cb9b7ee4"
-		;;
-	ppc64)
-		distfiles+="
-		 https://alpha.de.repo.voidlinux.org/distfiles/cargo-${_cargo_dist_version}-powerpc64-unknown-linux-gnu.tar.xz"
-		checksum+="
-		 512c69762fe2a18b6d9781186e77f76333f7ac179e76135cb85ba19e703afaca"
-		;;
-	ppc64-musl)
-		distfiles+="
-		 https://alpha.de.repo.voidlinux.org/distfiles/cargo-${_cargo_dist_version}-powerpc64-unknown-linux-musl.tar.xz"
-		checksum+="
-		 9b8cdacbb4859addfe63cf8ea1df9eb32343e25a18bef2a6422f990728d0e78a"
-		;;
-	ppc)
-		distfiles+="
-		 https://static.rust-lang.org/dist/cargo-${_cargo_dist_version}-powerpc-unknown-linux-gnu.tar.gz"
-		checksum+="
-		 821b4acd67c438b533436e1a57d11e9e267f6641493c9d49650ace657f59e106"
-		;;
-	ppc-musl)
-		distfiles+="
-		 https://alpha.de.repo.voidlinux.org/distfiles/cargo-${_cargo_dist_version}-powerpc-unknown-linux-musl.tar.xz"
-		checksum+="
-		 eee6637b48d9bbf6375a2de75e36b8670fae26d8da9c53a9890380b9a29d0bcf"
-		;;
+		x86_64*|i686|ppc64le|ppc) ;;
+		ppc*) _bootstrap_url="https://alpha.de.repo.voidlinux.org/distfiles" ;;
+		*) broken="unsupported host: ${XBPS_MACHINE}" ;;
+	esac
+
+	distfiles+="
+	 ${_bootstrap_url}/cargo-${_cargo_dist_version}-${RUST_BUILD}.tar.xz"
+
+	case "$XBPS_MACHINE" in
+		i686)
+			checksum+="
+			 2996b0fb41506e87d9b07851f40b41fed94725cf53c3d251e4e1c78eea08df4c"
+			;;
+		x86_64)
+			checksum+="
+			 80bcb1368ce98d13cb371df89cbbed9007fb98843f34d07f2abd2c03b8f2747a"
+			;;
+		x86_64-musl)
+			checksum+="
+			 1d7d881a5af73fb7c3f632278d47a7d174f8347673e2263c4cd6a2f7d0278733"
+			;;
+		ppc64le)
+			checksum+="
+			 456d019511cfe015152a7a4c1c2f518fdeb10e0c610c9bc3ef44d73861ca967e"
+			;;
+		ppc64le-musl)
+			checksum+="
+			 5725c42c8356443db15f378d88f2ccb67e363ebf4beacc96ae1eac9ba36f8fe7"
+			;;
+		ppc64)
+			checksum+="
+			 73a4f13b8edda6b4c9c1818341c5d936f7b11a04f892358039d072b80ccd41dc"
+			;;
+		ppc64-musl)
+			checksum+="
+			 ac18707b8df5d1f64b7e15dabd73eb7a3b0f9ef5976ef7c6ceb462b5d3feb9cd"
+			;;
+		ppc)
+			checksum+="
+			 02c07b741062e75556f5993a05eefe6dace70fee4a45542f1c6997fa69624d7e"
+			;;
+		ppc-musl)
+			checksum+="
+			 b06306fc164bffa73afd2d21d96381a28d38446e58cf01a0d1585e92b4656a23"
+			;;
 	esac
 fi
 
@@ -81,6 +78,20 @@ post_extract() {
 	if [ -z "$CROSS_BUILD" ]; then
 		mkdir -p target/snapshot
 		cp ../cargo-${_cargo_dist_version}-${RUST_TARGET}/cargo/bin/cargo cargo
+	fi
+
+	mv ${XBPS_BUILDDIR}/git2-rs-libgit2-sys-${_libgit2_ver} .
+	mv git2-rs-libgit2-sys-${_libgit2_ver}/libgit2-sys .
+}
+
+post_patch() {
+	# but only use the patched libgit2 when not static; when static, bundled
+	# libgit2 is used and this would not work (libgit2 sources are not there)
+	if [ ! "$build_option_static" ]; then
+		cat >> Cargo.toml <<- EOF
+			[patch.crates-io]
+			libgit2-sys = { path = './libgit2-sys' }
+		EOF
 	fi
 }
 
@@ -100,8 +111,9 @@ do_build() {
 		cargo="./cargo"
 	fi
 
+	# gotta pin out libgit2-sys at the version
 	$cargo update
-	$cargo update --package libc --precise 0.2.55
+	$cargo update --package libgit2-sys --precise ${_libgit2_ver}
 	$cargo build --release $(vopt_if static --features="all-static")
 }
 
@@ -114,7 +126,8 @@ do_install() {
 	for f in src/etc/man/*.?; do
 		vman $f
 	done
-	vinstall src/etc/cargo.bashcomp.sh 0644 usr/share/bash-completion/completions cargo
+	vinstall src/etc/cargo.bashcomp.sh 0644 \
+	 usr/share/bash-completion/completions cargo
 	vinstall src/etc/_cargo 0644 usr/share/zsh/site-functions
 
 	vlicense LICENSE-APACHE
